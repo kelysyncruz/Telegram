@@ -6,14 +6,21 @@
 <title>Continuar</title>
 
 <script>
-function abrirTelegram() {
-    // tentativa 1 - abrir app do Telegram
-    window.location.href = "tg://resolve?domain=KelysynPrive_bot";
+let abriu = false;
 
-    // tentativa 2 - fallback para link https
-    setTimeout(function() {
-        window.location.href = "https://t.me/KelysynPrive_bot";
-    }, 1200);
+function abrirTelegram() {
+  if (abriu) return; // bloqueia abertura dupla
+  abriu = true;
+
+  // abre o app Telegram (1 tentativa)
+  window.location.href = "tg://resolve?domain=KelysynPrive_bot";
+
+  // fallback seguro (sem duplicar start)
+  setTimeout(function() {
+    if (!document.hidden) {
+      window.location.href = "https://t.me/KelysynPrive_bot";
+    }
+  }, 1800);
 }
 </script>
 
@@ -21,27 +28,11 @@ function abrirTelegram() {
 <body style="background:#000;color:#fff;text-align:center;font-family:Arial;padding-top:50px;">
 
 <h2>Conectando ao Telegram…</h2>
-<p style="font-size:14px;color:#aaa;">Se não abrir automaticamente, toque no botão 👇</p>
+<p style="font-size:14px;color:#aaa;">Se não abrir, toque no botão 👇</p>
 
 <button onclick="abrirTelegram()" style="margin-top:20px;padding:14px 28px;background:#0088cc;color:#fff;border:none;border-radius:8px;font-size:16px;">
 ABRIR TELEGRAM 🚀
 </button>
-
-<p style="margin-top:25px;font-size:12px;color:#777;">
-Caso não funcione, use um dos modos abaixo:
-</p>
-
-<a href="https://t.me/KelysynPrive_bot" style="display:block;margin:10px auto;padding:12px 20px;width:220px;background:#1c1c1c;color:#fff;text-decoration:none;border-radius:6px;font-size:14px;">
-Modo alternativo 1
-</a>
-
-<a href="tg://resolve?domain=KelysynPrive_bot" style="display:block;margin:10px auto;padding:12px 20px;width:220px;background:#1c1c1c;color:#fff;text-decoration:none;border-radius:6px;font-size:14px;">
-Modo alternativo 2
-</a>
-
-<script>
-abrirTelegram();
-</script>
 
 </body>
 </html>
