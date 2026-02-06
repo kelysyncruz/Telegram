@@ -4,35 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Continuar</title>
-
-<script>
-let abriu = false;
-
-function abrirTelegram() {
-  if (abriu) return; // bloqueia abertura dupla
-  abriu = true;
-
-  // abre o app Telegram (1 tentativa)
-  window.location.href = "tg://resolve?domain=KelysynPrive_bot";
-
-  // fallback seguro (sem duplicar start)
-  setTimeout(function() {
-    if (!document.hidden) {
-      window.location.href = "https://t.me/KelysynPrive_bot";
-    }
-  }, 1800);
-}
-</script>
-
 </head>
-<body style="background:#000;color:#fff;text-align:center;font-family:Arial;padding-top:50px;">
+<body style="background:#000;color:#fff;text-align:center;font-family:Arial;padding-top:60px;">
 
-<h2>Conectando ao Telegram…</h2>
-<p style="font-size:14px;color:#aaa;">Se não abrir, toque no botão 👇</p>
+<h2>Toque no botão para continuar 👇</h2>
 
-<button onclick="abrirTelegram()" style="margin-top:20px;padding:14px 28px;background:#0088cc;color:#fff;border:none;border-radius:8px;font-size:16px;">
+<!-- BOTÃO PRINCIPAL (SEM DUPLO START) -->
+<a href="https://t.me/KelysynPrive_bot"
+style="display:inline-block;margin-top:25px;padding:16px 32px;background:#0088cc;color:#fff;text-decoration:none;border-radius:10px;font-size:18px;">
 ABRIR TELEGRAM 🚀
-</button>
+</a>
+
+<p style="margin-top:25px;font-size:13px;color:#aaa;">
+Se não abrir, segure o botão e escolha “Abrir em nova aba”.
+</p>
+
+<!-- BOTÃO ALTERNATIVO (APP DIRETO) -->
+<a href="tg://resolve?domain=KelysynPrive_bot"
+style="display:block;margin:20px auto;padding:12px 22px;width:240px;background:#1c1c1c;color:#fff;text-decoration:none;border-radius:8px;font-size:14px;">
+Modo alternativo (App Telegram)
+</a>
 
 </body>
 </html>
